@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Impact Assessment | Stratedge Learning</title>
+<meta name="description" content="Evaluate your AI system&#x27;s ethical compliance, governance and risk mitigation across 10 pillars (ISO/IEC 42005) and get your AI Responsibility Index.">
+<link rel="canonical" href="https://www.stratedgelearn.site/ai-training/ai-impact-assessment/">
+<meta property="og:title" content="AI Impact Assessment | Stratedge Learning">
+<meta property="og:description" content="Evaluate your AI system&#x27;s ethical compliance, governance and risk mitigation across 10 pillars (ISO/IEC 42005) and get your AI Responsibility Index.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stratedge Learning">
+<meta name="theme-color" content="#0b183c">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<style>
+
+        
+
+        /* StratEdge Brand Variables - Visionary Navy Theme */
+        #stratedge-aiia {
+            --se-primary: #0b183c; /* Bold Navy Blue */
+            --se-primary-hover: #132656;
+            --se-bg-main: #ffffff;
+            --se-bg-alt: #f8fafc;
+            --se-border: #e2e8f0;
+            --se-text-dark: #1e293b;
+            --se-text-muted: #64748b;
+            
+            /* Status Colors */
+            --se-danger: #ef4444;
+            --se-warning: #f59e0b;
+            --se-success: #10b981;
+        }
+
+        /* Container Reset for easy embedding */
+        #stratedge-aiia {
+            font-family: inherit;
+            color: var(--se-text-dark);
+            background-color: var(--se-bg-main);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        #stratedge-aiia *, #stratedge-aiia *::before, #stratedge-aiia *::after {
+            box-sizing: inherit;
+        }
+
+        /* Header Styling */
+        .se-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .se-logo-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--se-primary);
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .se-subtitle {
+            font-size: 1.1rem;
+            color: var(--se-text-muted);
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        .se-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            font-size: 1rem;
+            color: var(--se-text-muted);
+            background: var(--se-bg-alt);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--se-border);
+        }
+
+        /* Form & Question Cards */
+        .se-question-card {
+            background: var(--se-bg-main);
+            border: 1px solid var(--se-border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            border-left: 4px solid var(--se-primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .se-question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .se-pillar-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--se-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .se-question-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--se-text-dark);
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        /* Radio Button Scale */
+        .se-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .se-option {
+            flex: 1;
+            min-width: 130px;
+            position: relative;
+        }
+
+        .se-option input[type="radio"] { position:absolute; opacity:0; width:1px; height:1px; margin:0;
+        }
+
+        .se-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--se-bg-alt);
+            border: 1px solid var(--se-border);
+            padding: 15px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--se-primary);
+            transition: all 0.2s ease;
+            height: 100%;
+        }
+
+        .se-option label span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            margin-top: 6px;
+            color: var(--se-text-muted);
+        }
+
+        .se-option input[type="radio"]:checked + label {
+            background: var(--se-primary);
+            color: #ffffff;
+            border-color: var(--se-primary);
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.2);
+        }
+
+        .se-option input[type="radio"]:checked + label span {
+            color: #e2e8f0;
+        }
+
+        /* Validation Error */
+        #se-error {
+            display: none;
+            background: #fef2f2;
+            color: var(--se-danger);
+            border: 1px solid #f87171;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .se-btn-group {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .se-btn {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .se-btn-primary {
+            background-color: var(--se-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 6px rgba(26, 35, 126, 0.2);
+        }
+
+        .se-btn-primary:hover {
+            background-color: var(--se-primary-hover);
+            box-shadow: 0 6px 12px rgba(26, 35, 126, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .se-btn-outline {
+            background-color: transparent;
+            color: var(--se-primary);
+            border: 2px solid var(--se-primary);
+        }
+
+        .se-btn-outline:hover {
+            background-color: var(--se-bg-alt);
+        }
+
+        /* Results Section */
+        #se-results {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .se-result-box {
+            background: var(--se-bg-alt);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--se-border);
+            margin-bottom: 30px;
+        }
+
+        .se-score-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 8px solid var(--se-primary);
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.15);
+        }
+
+        .se-score-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--se-primary);
+            line-height: 1;
+        }
+
+        .se-score-label {
+            font-size: 1rem;
+            color: var(--se-text-muted);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .se-level-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .se-level-desc {
+            font-size: 1.1rem;
+            color: var(--se-text-dark);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--se-border);
+        }
+
+        /* Status Modifiers */
+        .status-high .se-score-container { border-color: var(--se-danger); color: var(--se-danger); }
+        .status-high .se-score-value { color: var(--se-danger); }
+        .status-high .se-level-title { color: var(--se-danger); }
+
+        .status-mod .se-score-container { border-color: var(--se-warning); color: var(--se-warning); }
+        .status-mod .se-score-value { color: var(--se-warning); }
+        .status-mod .se-level-title { color: var(--se-warning); }
+
+        .status-low .se-score-container { border-color: var(--se-success); color: var(--se-success); }
+        .status-low .se-score-value { color: var(--se-success); }
+        .status-low .se-level-title { color: var(--se-success); }
+    
+.se-option{position:relative}
+.se-option input[type="radio"]:focus-visible + label{outline:3px solid #f26205; outline-offset:2px}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap nav-bar">
+<a class="brand" href="../../"><img src="../../assets/img/logo-mark.png" alt="" width="40" height="40"><span class="brand-text"><b>STRATEDGE</b><span>LEARNING</span></span><span class="visually-hidden"> home</span></a>
+<button class="nav-toggle" aria-expanded="false" aria-controls="main-nav"><span class="bars"><i></i></span>Menu</button>
+<nav class="main-nav" id="main-nav" aria-label="Main">
+<ul>
+<li><a href="../../">Home</a></li>
+<li class="has-sub"><div class="sub-row"><a href="../../open-access-modules/">Open Access Modules</a><button class="sub-toggle" aria-expanded="false" aria-controls="panel-oam"><span class="visually-hidden">Show module pages</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
+<div class="sub-panel mega" id="panel-oam"><div class="mega-grid"><div><h3>Education</h3><ul><li><a href="../../open-access-modules/zimbabwean-primary-school-teachers/">Zimbabwean Primary School Teachers</a></li><li><a href="../../open-access-modules/south-african-primary-school-teachers/">South African Primary School Teachers</a></li><li><a href="../../open-access-modules/south-african-secondary-school-teachers/">South African Secondary School Teachers</a></li><li><a href="../../open-access-modules/zimbabwean-educational-leaders/">Zimbabwean Educational Leaders</a></li><li><a href="../../open-access-modules/south-african-educational-leaders/">South African Educational Leaders</a></li></ul></div><div><h3>Health &amp; Inclusion</h3><ul><li><a href="../../open-access-modules/zimbabwean-allied-health-workers/">Zimbabwean Allied Health Workers</a></li><li><a href="../../open-access-modules/zimbabwean-nurses/">Zimbabwean Nurses</a></li><li><a href="../../open-access-modules/zimbabwean-social-health-workers/">Zimbabwean Social Health Workers</a></li><li><a href="../../open-access-modules/african-medical-practitioner/">African Medical Practitioners</a></li><li><a href="../../open-access-modules/african-mental-health-professionals/">African Mental Health Professionals</a></li><li><a href="../../open-access-modules/disability-in-african-contexts/">Disability in African Contexts</a></li></ul></div><div><h3>Business, Engineering &amp; Trades</h3><ul><li><a href="../../open-access-modules/south-african-business-finance-executves/">South African Business &amp; Finance Executives</a></li><li><a href="../../open-access-modules/zimbabwean-business-executives/">Zimbabwean Business Executives</a></li><li><a href="../../open-access-modules/zimbabwean-business-finance-professionals/">Zimbabwean Business &amp; Finance Professionals</a></li><li><a href="../../open-access-modules/zimbabwean-engineering-professionals/">Zimbabwean Engineering Professionals</a></li><li><a href="../../open-access-modules/zimbabwean-tradespeople/">Zimbabwean Tradespeople</a></li><li><a href="../../open-access-modules/zimbabwean-legal-professional/">Zimbabwean Legal Professionals (coming soon)</a></li></ul></div></div><div class="all-link"><a href="../../open-access-modules/">All Open Access Modules →</a></div></div></li>
+<li class="has-sub is-section"><div class="sub-row"><a href="../../ai-training/">AI Training</a><button class="sub-toggle" aria-expanded="false" aria-controls="panel-ait"><span class="visually-hidden">Show AI Training pages</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
+<div class="sub-panel" id="panel-ait"><ul><li><a href="../../ai-training/">AI Training overview</a></li><li><a href="../../ai-training/ai-impact-assessment/" aria-current="page">AI Impact Assessment</a></li><li><a href="../../ai-training/ai-maturity-assessment/">AI Maturity Assessment</a></li></ul></div></li>
+<li><a href="../../published-works/">Published Works</a></li>
+<li><a href="../../news-insights/">News &amp; Insights</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-hero"><div class="wrap"><div>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../ai-training/">AI Training</a></li><li><span aria-current="page">AI Impact Assessment</span></li></ol></nav>
+<p class="kicker">Free self-assessment</p><h1>AI Impact Assessment</h1>
+<p>Answer ten questions to receive your result instantly. Nothing you enter leaves your browser.</p>
+</div><img src="../../assets/img/banner-assessments.jpg" alt="Icons for healthcare, education, business, trades, law and technology connected by AI" width="1536" height="1024" class="banner-img"></div></section><section class="section"><div class="wrap">
+
+<div id="stratedge-aiia">
+    
+    <!-- Header -->
+    <div class="se-header">
+        <p class="se-logo-text">STRATEDGE</p>
+        <div class="se-subtitle">AI Impact Assessment (ISO/IEC 42005)</div>
+    </div>
+
+    <!-- Intro -->
+    <div id="se-intro-section" class="se-intro">
+        <p>Evaluate your AI system's ethical compliance, governance, and risk mitigation strategies based on global standards. Complete the 10 pillars below to generate your AI Responsibility Index.</p>
+    </div>
+
+    <div id="se-error">Please select an answer for all 10 pillars before calculating your index.</div>
+
+    <!-- Form Container -->
+    <div id="se-form-container"></div>
+
+    <!-- Submit Button -->
+    <div id="se-submit-container" class="se-btn-group">
+        <button class="se-btn se-btn-primary" onclick="calculateScore()">Calculate Responsibility Index</button>
+    </div>
+
+    <!-- Results Container -->
+    <div id="se-results">
+        <div class="se-result-box" id="se-result-box">
+            <div class="se-score-container">
+                <div style="text-align: center;">
+                    <div class="se-score-value"><span id="se-score-display">0</span>%</div>
+                    <span class="se-score-label">Index Score</span>
+                </div>
+            </div>
+            <h2 class="se-level-title" id="se-level-display">Risk Level</h2>
+            <div class="se-level-desc" id="se-desc-display">Recommendation goes here.</div>
+        </div>
+
+        <div class="se-btn-group">
+            <a href="mailto:info@stratedgelearn.site?subject=AIIA Validation Request&body=Please contact me to validate my AI Impact Assessment results." class="se-btn se-btn-primary">Submit for Expert Validation by StratEdge</a>
+            <button class="se-btn se-btn-outline" onclick="resetForm()">Recalculate Assessment</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+</div></section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div class="foot-brand">
+<img src="../../assets/img/logo.png" alt="Stratedge Learning" width="150" height="144" loading="lazy">
+<p>Practical, inclusive AI literacy for African professionals, grounded in local realities.</p>
+<p>Stratedge Learning is a division of <a href="https://www.syllix-one.com" target="_blank" rel="noopener">Syllix-One</a>.</p>
+</div>
+<div><h2>Learn</h2><ul><li><a href="../../open-access-modules/">Open Access Modules</a></li><li><a href="../../ai-training/">AI Training</a></li><li><a href="../../ai-training/ai-impact-assessment/">AI Impact Assessment</a></li><li><a href="../../ai-training/ai-maturity-assessment/">AI Maturity Assessment</a></li></ul></div>
+<div><h2>Explore</h2><ul><li><a href="../../">Home</a></li><li><a href="../../published-works/">Published Works</a></li><li><a href="../../news-insights/">News &amp; Insights</a></li><li><a href="https://www.youtube.com/@stratedgeai-z8e1u" target="_blank" rel="noopener">YouTube channel</a></li></ul></div>
+<div><h2>Contact</h2><ul>
+<li><a href="mailto:info@stratedgelearn.site">info@stratedgelearn.site</a></li>
+<li>Training &amp; consulting:<br><a href="mailto:solutions@stratedgeconsult.services">solutions@stratedgeconsult.services</a></li>
+<li>Harare, Zimbabwe</li></ul></div>
+</div>
+<div class="foot-bottom"><span>Copyright © 2026 Stratedge Learning, Global. All rights reserved.</span><span>A division of <a href="https://www.syllix-one.com" target="_blank" rel="noopener">Syllix-One</a></span></div>
+</div>
+</footer>
+<script src="../../assets/js/site.js" defer></script>
+<script>
+
+    const questions = [
+        { id: 1, pillar: "Stakeholder Impact", text: "How comprehensively have you identified and engaged with direct and indirect parties affected by this AI system?" },
+        { id: 2, pillar: "Bias & Fairness", text: "To what extent are technical measures implemented to detect and mitigate demographic or systemic bias within the model?" },
+        { id: 3, pillar: "Human Oversight", text: "Are there robust 'Human-in-the-loop' (HITL) override protocols established for critical AI decisions?" },
+        { id: 4, pillar: "Explainability", text: "How capable is the system of explaining its logic and outputs clearly to non-technical users and stakeholders?" },
+        { id: 5, pillar: "Data Privacy", text: "Is 'Privacy by Design' fully integrated, ensuring strict compliance with data protection regulations (e.g., GDPR)?" },
+        { id: 6, pillar: "Safety & Robustness", text: "Has the system undergone rigorous red-teaming and failure-mode analysis to prevent adversarial attacks or critical failures?" },
+        { id: 7, pillar: "Environmental Sustainability", text: "To what extent has the energy consumption and carbon footprint of training and deploying the AI model been assessed and minimised?" },
+        { id: 8, pillar: "Accountability", text: "Are there clearly defined legal and operational responsibility structures in place for when the AI system makes an error?" },
+        { id: 9, pillar: "Transparency", text: "How transparently is it disclosed to users that they are interacting with or being impacted by an artificial intelligence system?" },
+        { id: 10, pillar: "Continuous Monitoring", text: "Are active systems in place for post-deployment monitoring to detect model drift, emerging risks, and performance degradation?" }
+    ];
+
+    const scaleOptions = [
+        { val: 1, label: "Not Addressed" },
+        { val: 2, label: "Initial Stages" },
+        { val: 3, label: "Partially Implemented" },
+        { val: 4, label: "Mostly Optimised" },
+        { val: 5, label: "Fully Optimised" }
+    ];
+
+    function renderForm() {
+        const container = document.getElementById('se-form-container');
+        container.innerHTML = '';
+
+        questions.forEach((q, index) => {
+            let optionsHTML = '';
+            scaleOptions.forEach(opt => {
+                optionsHTML += `
+                    <div class="se-option">
+                        <input type="radio" id="q${q.id}_${opt.val}" name="q${q.id}" value="${opt.val}">
+                        <label for="q${q.id}_${opt.val}">
+                            ${opt.val}
+                            <span>${opt.label}</span>
+                        </label>
+                    </div>
+                `;
+            });
+
+            const cardHTML = `
+                <div class="se-question-card">
+                    <span class="se-pillar-badge">${q.pillar}</span>
+                    <h3 class="se-question-title" id="qt${q.id}">${index + 1}. ${q.text}</h3>
+                    <div class="se-options" role="radiogroup" aria-labelledby="qt${q.id}">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+    }
+
+    function calculateScore() {
+        let totalScore = 0;
+        let answeredCount = 0;
+        document.getElementById('se-error').style.display = 'none';
+
+        questions.forEach(q => {
+            const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+            if (selected) {
+                totalScore += parseInt(selected.value);
+                answeredCount++;
+            }
+        });
+
+        if (answeredCount < questions.length) {
+            document.getElementById('se-error').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('se-error').offsetTop - 20, behavior: 'smooth' });
+            return;
+        }
+
+        // Calculate Percentage (Max score is 50)
+        const percentage = Math.round((totalScore / 50) * 100);
+        displayResults(percentage);
+    }
+
+    function displayResults(percentage) {
+        let levelName = "";
+        let description = "";
+        let statusClass = "";
+
+        const resultBox = document.getElementById('se-result-box');
+        resultBox.className = "se-result-box"; // Reset classes
+
+        if (percentage < 40) {
+            levelName = "High Risk / Critical Action Required";
+            statusClass = "status-high";
+            description = "Immediate intervention is necessary to prevent significant ethical and compliance failures.<br>We strongly advise pausing deployment until core vulnerabilities are addressed.";
+        } else if (percentage >= 40 && percentage < 70) {
+            levelName = "Moderate Risk / Governance Gaps";
+            statusClass = "status-mod";
+            description = "Foundational governance exists, but significant gaps remain in operationalising AI ethics.<br>Targeted remediation is required to align with ISO/IEC 42005 standards.";
+        } else if (percentage >= 70) {
+            levelName = "Low Risk / Aligned with Global Standards";
+            statusClass = "status-low";
+            description = "Your AI system demonstrates a strong commitment to responsible innovation and ethical design.<br>Continue proactive monitoring to maintain this high standard of compliance.";
+        }
+
+        resultBox.classList.add(statusClass);
+        document.getElementById('se-score-display').innerText = percentage;
+        document.getElementById('se-level-display').innerText = levelName;
+        document.getElementById('se-desc-display').innerHTML = description;
+        
+        document.getElementById('se-intro-section').style.display = 'none';
+        document.getElementById('se-form-container').style.display = 'none';
+        document.getElementById('se-submit-container').style.display = 'none';
+        document.getElementById('se-results').style.display = 'block';
+
+        window.scrollTo({ top: document.getElementById('stratedge-aiia').offsetTop, behavior: 'smooth' });
+    }
+
+    function resetForm() {
+        questions.forEach(q => {
+            const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+            if (selected) selected.checked = false;
+        });
+
+        document.getElementById('se-results').style.display = 'none';
+        document.getElementById('se-intro-section').style.display = 'block';
+        document.getElementById('se-form-container').style.display = 'block';
+        document.getElementById('se-submit-container').style.display = 'flex';
+        document.getElementById('se-error').style.display = 'none';
+        
+        window.scrollTo({ top: document.getElementById('stratedge-aiia').offsetTop, behavior: 'smooth' });
+    }
+
+    // Initialize the form on page load
+    document.addEventListener("DOMContentLoaded", renderForm);
+
+</script>
+</body>
+</html>
