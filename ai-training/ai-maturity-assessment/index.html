@@ -392,7 +392,6 @@
 <div><h2>Explore</h2><ul><li><a href="../../">Home</a></li><li><a href="../../published-works/">Published Works</a></li><li><a href="../../news-insights/">News &amp; Insights</a></li><li><a href="https://www.youtube.com/@stratedgeai-z8e1u" target="_blank" rel="noopener">YouTube channel</a></li></ul></div>
 <div><h2>Contact</h2><ul>
 <li><a href="mailto:info@stratedgelearn.site">info@stratedgelearn.site</a></li>
-<li>Training &amp; consulting:<br><a href="mailto:solutions@stratedgeconsult.services">solutions@stratedgeconsult.services</a></li>
 <li>Harare, Zimbabwe</li></ul></div>
 </div>
 <div class="foot-bottom"><span>Copyright © 2026 Stratedge Learning, Global. All rights reserved.</span><span>A division of <a href="https://www.syllix-one.com" target="_blank" rel="noopener">Syllix-One</a></span></div>
@@ -482,19 +481,23 @@
         let recommendation = "";
 
         // Gartner-aligned scoring logic as per requirements
-        if (score < 2) {
+        if (score < 1.8) {
             levelName = "Level 1: Aware";
             description = "Your organisation recognises the potential of AI but lacks a formal strategy or dedicated infrastructure. Efforts are likely siloed and experimental.";
             recommendation = "Focus on executive alignment, basic data cataloguing, and identifying high-impact, low-risk pilot projects to prove business value.";
-        } else if (score >= 2 && score < 3) {
+        } else if (score < 2.6) {
             levelName = "Level 2: Active";
             description = "You have active AI pilots and foundational infrastructure in place. However, initiatives are not yet fully standardised or integrated across the enterprise.";
             recommendation = "Prioritise establishing formal governance, standardising MLOps processes, and bridging the 'talent gap' with AI Translators.";
-        } else if (score >= 3 && score < 4) {
+        } else if (score < 3.4) {
             levelName = "Level 3: Operational";
             description = "AI is successfully deployed in production with measurable ROI. You have standard operating procedures and a solid governance framework in place.";
             recommendation = "Shift focus towards enterprise-wide scalability, advanced upskilling, and treating AI assets as core drivers of business strategy.";
-        } else if (score >= 4) {
+        } else if (score < 4.2) {
+            levelName = "Level 4: Systemic";
+            description = "AI is used across most business units and is built into how new products, services and processes are designed. Governance, data and skills are managed at enterprise level rather than project by project.";
+            recommendation = "Strengthen cross-functional AI platforms, measure value consistently across the portfolio, and prepare leadership and culture for AI-driven business model change.";
+        } else {
             levelName = "Level 5: Transformational";
             description = "AI is deeply woven into your business DNA. Your organisation operates with a highly scalable, ethically governed, and continuously innovating AI ecosystem.";
             recommendation = "Maintain leadership by exploring autonomous AI agents, contributing to industry data standards, and continuously refining your ethical AI guardrails.";
